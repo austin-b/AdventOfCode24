@@ -15,11 +15,10 @@ fn main() {
         })
         .collect();
 
-    let safe: Vec<bool> = reports.iter().map(|report| safety_checker(report)).collect();
-
-    println!("{:?}", safe);
-
-    let safe_count = safe.iter().filter(|&s| *s).count();
+    let safe_count = reports.iter()
+                            .filter(|report| safety_checker(report))
+                            .count();
+                        
     println!("Safe reports: {}", safe_count);
 }
 
